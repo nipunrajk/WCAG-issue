@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Page</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+      }
+      .main-container {
+        width: 900px; /* WCAG 1.4.10: Reflow - Fixed width can cause horizontal scrolling on small screens */
+        margin: 0 auto;
+      }
+      .header {
+        background-color: #333;
+        padding: 10px;
+        color: white;
+      }
+      .low-contrast-text {
+        color: #aaaaaa; /* WCAG 1.4.3: Contrast (Minimum) - Very low contrast against white background */
+      }
+      .link-style {
+        color: #0000ee; /* WCAG 1.4.1: Use of Color - Link identified by color only, no underline */
+      }
+      .fake-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        display: inline-block;
+        cursor: pointer;
+      }
+      /* WCAG 2.4.7: Focus Visible - Focus indicator is removed */
+      a:focus,
+      input:focus,
+      div:focus {
+        outline: none;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>Welcome to our Website</h1>
+      <h3>Our Services</h3>
+
+      <p class="low-contrast-text">
+        This is some text with very low contrast, making it difficult for users
+        with visual impairments to read.
+      </p>
+
+      <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Logo" />
+
+      <br /><br />
+      <p>
+        We are dedicated to providing the best services.
+        <img src="https://via.placeholder.com/100" alt="image" />
+      </p>
+
+      <a href="about.html" class="link-style">Click Here</a> to learn more about
+      us.
+
+      <hr />
+
+      <div class="fake-button" onclick="showAlert()">
+        I am not a real button
+      </div>
+
+      <hr />
+
+      <h3>Contact Us</h3>
+      <form action="#">
+        <input type="text" placeholder="Your Name" /> <br /><br />
+        <input type="email" id="email_input" /> <br /><br />
+        <button type="submit" style="font-size: 0">-></button>
+      </form>
+
+      <hr />
+
+      <h3>User Data</h3>
+      <table>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Email</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>john.doe@example.com</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>jane.smith@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <button id="loadContentBtn">Load More Content</button>
+      <div id="dynamic-content"></div>
+    </div>
+
+    <script>
+      // WCAG 2.1.1: Keyboard - This 'div' button is not keyboard accessible (not focusable, no keydown event)
+      function showAlert() {
+        alert('This is a div, not a real button!');
+      }
+
+      document
+        .getElementById('loadContentBtn')
+        .addEventListener('click', function () {
+          const contentArea = document.getElementById('dynamic-content');
+          contentArea.innerHTML =
+            "<p>Some new content has just appeared! A screen reader probably won't notice this.</p>";
+        });
+    </script>
+  </body>
+</html>
